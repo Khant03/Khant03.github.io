@@ -1,39 +1,148 @@
-<!doctype html>
-<html lang="my">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For You ❤️</title>
-<style>
-  *{box-sizing:border-box}
-  body{
-    margin:0; min-height:100vh; display:grid; place-items:center;
-    font-family:system-ui,"Noto Sans Myanmar",sans-serif;
-    background:linear-gradient(135deg,#ffd6e7,#fff0f5);
-    color:#5b1835; overflow:hidden;
-  }
-  .card{
-    width:min(90%,430px); padding:34px 24px; text-align:center;
-    background:rgba(255,255,255,.82); border-radius:28px;
-    box-shadow:0 15px 45px rgba(100,20,60,.15);
-  }
-  .heart{font-size:64px; animation:pulse 1.2s infinite}
-  h1{margin:8px 0 16px;font-size:30px}
-  p{font-size:18px;line-height:1.8;margin:10px 0}
-  .from{margin-top:22px;font-weight:700}
-  @keyframes pulse{50%{transform:scale(1.12)}}
-  .small{font-size:13px;opacity:.7;margin-top:18px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Message ❤️💔</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+      animation: zoom 2s ease-in-out infinite alternate;
+    }
+
+    h1 {
+      color: white;
+      font-size: clamp(32px, 8vw, 70px);
+      margin: 0;
+      text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #ff0000,
+        0 0 50px #ff0000;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    .hearts {
+      font-size: 45px;
+      margin-top: 25px;
+      letter-spacing: 15px;
+      animation: heartbeat 1s infinite;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: 30px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(3) {
+      left: 50%;
+      animation-delay: 4s;
+    }
+
+    .heart:nth-child(4) {
+      left: 70%;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(5) {
+      left: 90%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.7) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0.95);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <main class="card">
-    <div class="heart">❤️</div>
-    <h1>For My Favorite Girl</h1>
-    <p>သာကြီးတို့ လီးပဲ။</p>
-    <p>Fuck You🖕 </p>
-    <p>🖕🖕🖕🖕🖕🖕</p>
-    <div class="from">With love 💌</div>
-    <div class="small">Made with Python/HTML practice ✨</div>
-  </main>
+
+  <div class="container">
+    <h1>You are son of a bitch</h1>
+
+    <div class="hearts">
+      ❤️ 💔 ❤️ 💔 ❤️
+    </div>
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="heart">❤️</div>
+  <div class="heart">💔</div>
+  <div class="heart">❤️</div>
+  <div class="heart">💔</div>
+  <div class="heart">❤️</div>
+
 </body>
 </html>
