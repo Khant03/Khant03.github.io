@@ -1,40 +1,134 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3 Digit Random Wheel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f2f2f2;
-      padding-top: 40px;
-    }
+<title>Random Number Wheel</title>
 
-    h1 {
-      font-size: 28px;
-    }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #eeeeee;
+    padding-top: 50px;
+}
 
-    .wheel {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      margin: 30px auto;
-      background: conic-gradient(
+h1 {
+    font-size: 28px;
+}
+
+/* စက်ဝိုင်း */
+.wheel {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin: 40px auto;
+
+    background: conic-gradient(
         #ff5252,
         #ffca28,
         #66bb6a,
         #42a5f5,
         #ab47bc,
         #ff5252
-      );
+    );
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    box-shadow: 0 5px 20px #888;
+}
+
+/* အလယ်က ဂဏန်း */
+.number {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 65px;
+    font-weight: bold;
+}
+
+/* လှည့်တဲ့ Animation */
+.spinning {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+button {
+    padding: 15px 45px;
+    font-size: 22px;
+    border: none;
+    border-radius: 12px;
+
+    background: #2196f3;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎯 Random Number Wheel</h1>
+
+<div class="wheel" id="wheel">
+    <div class="number" id="number">?</div>
+</div>
+
+<button onclick="spin()">လှည့်မယ်</button>
+
+
+<script>
+
+function spin() {
+
+    let wheel = document.getElementById("wheel");
+    let number = document.getElementById("number");
+
+    // လှည့်နေတဲ့ Animation စမယ်
+    wheel.classList.add("spinning");
+
+    number.innerText = "?";
+
+    // 3 စက္ကန့်ကြာပြီး Result ထုတ်မယ်
+    setTimeout(function() {
+
+        // 0 - 9 random
+        let result = Math.floor(Math.random() * 10);
+
+        // Animation ရပ်
+        wheel.classList.remove("spinning");
+
+        // ဂဏန်းပြ
+        number.innerText = result;
+
+    }, 3000);
+}
+
+</script>
+
+</body>
+</html>
       transition: transform 3s ease-out;
       box-shadow: 0 5px 15px #999;
     }
