@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html lang="my">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Random Number Wheel</title>
+<title>Random Number</title>
 
 <style>
 body {
-    font-family: Arial, sans-serif;
     text-align: center;
-    background: #eeeeee;
+    font-family: Arial;
+    background: #eee;
     padding-top: 50px;
 }
 
-h1 {
-    font-size: 28px;
-}
-
-/* စက်ဝိုင်း */
 .wheel {
     width: 220px;
     height: 220px;
@@ -26,12 +21,8 @@ h1 {
     margin: 40px auto;
 
     background: conic-gradient(
-        #ff5252,
-        #ffca28,
-        #66bb6a,
-        #42a5f5,
-        #ab47bc,
-        #ff5252
+        red, orange, yellow, green,
+        blue, purple, red
     );
 
     display: flex;
@@ -41,7 +32,6 @@ h1 {
     box-shadow: 0 5px 20px #888;
 }
 
-/* အလယ်က ဂဏန်း */
 .number {
     width: 130px;
     height: 130px;
@@ -52,44 +42,37 @@ h1 {
     justify-content: center;
     align-items: center;
 
-    font-size: 65px;
+    font-size: 70px;
     font-weight: bold;
 }
 
-/* လှည့်တဲ့ Animation */
 .spinning {
-    animation: spin 0.5s linear infinite;
+    animation: spin 0.4s linear infinite;
 }
 
 @keyframes spin {
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
 }
 
 button {
-    padding: 15px 45px;
+    padding: 15px 40px;
     font-size: 22px;
-    border: none;
-    border-radius: 12px;
-
-    background: #2196f3;
+    border: 0;
+    border-radius: 10px;
+    background: blue;
     color: white;
-}
-
-button:active {
-    transform: scale(0.95);
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎯 Random Number Wheel</h1>
+<h1>🎯 Random Number</h1>
 
 <div class="wheel" id="wheel">
     <div class="number" id="number">?</div>
@@ -97,115 +80,26 @@ button:active {
 
 <button onclick="spin()">လှည့်မယ်</button>
 
-
 <script>
-
 function spin() {
 
-    let wheel = document.getElementById("wheel");
-    let number = document.getElementById("number");
+    const wheel = document.getElementById("wheel");
+    const number = document.getElementById("number");
 
-    // လှည့်နေတဲ့ Animation စမယ်
     wheel.classList.add("spinning");
-
     number.innerText = "?";
 
-    // 3 စက္ကန့်ကြာပြီး Result ထုတ်မယ်
     setTimeout(function() {
 
-        // 0 - 9 random
         let result = Math.floor(Math.random() * 10);
 
-        // Animation ရပ်
         wheel.classList.remove("spinning");
 
-        // ဂဏန်းပြ
         number.innerText = result;
 
     }, 3000);
 }
-
 </script>
-
-</body>
-</html>
-      transition: transform 3s ease-out;
-      box-shadow: 0 5px 15px #999;
-    }
-
-    .number {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: white;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 32px;
-      font-weight: bold;
-    }
-
-    button {
-      font-size: 20px;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 10px;
-      background: #2196f3;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    #result {
-      margin-top: 25px;
-      font-size: 30px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-
-<body>
-
-  <h1>🎯 3 Digit Random Wheel</h1>
-
-  <div class="wheel" id="wheel">
-    <div class="number" id="number">000</div>
-  </div>
-
-  <button onclick="spin()">လှည့်မယ်</button>
-
-  <div id="result">Result: ---</div>
-
-  <script>
-    let rotation = 0;
-
-    function spin() {
-
-      // 000 - 999 ထဲက random number
-      let randomNumber = Math.floor(Math.random() * 1000);
-
-      // 3 လုံးဖြစ်အောင်
-      let result = String(randomNumber).padStart(3, "0");
-
-      // Wheel လှည့်
-      rotation += 1440 + Math.floor(Math.random() * 360);
-
-      document.getElementById("wheel").style.transform =
-        `rotate(${rotation}deg)`;
-
-      // လှည့်ပြီးနောက် result ပြ
-      setTimeout(function() {
-        document.getElementById("number").innerText = result;
-        document.getElementById("result").innerText =
-          "Result: " + result;
-      }, 3000);
-    }
-  </script>
 
 </body>
 </html>
